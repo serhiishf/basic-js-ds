@@ -34,27 +34,7 @@ class BinarySearchTree {
     return this.findNodeWithData(this.mainRoot, data);
   }
 
-  remove(data) {
-    if (!this.mainRoot) {
-      return;
-    }
-    if (this.mainRoot.data === data) {
-      this.mainRoot = null;
-    }
-    let parentRemoveNode = this.getParentNodeForRemove(this.mainRoot, data);
-    let removeNode;
-    
-    /*     if (parentRemoveNode.left.data === data) {
-      removeNode = parentRemoveNode.left.data;
-    } else if (parentRemoveNode.right.data === data) {
-      removeNode = parentRemoveNode.right.data;
-    }
-    console.debug('MY INFO', parentRemoveNode, removeNode, 'MY INFO')
- */
-    //вверху получили parent ноду для удаления
-    //проверить есть ли у удаляемого элемента правая и левая нода
-    //
-  }
+  remove(data) {}
 
   min() {
     if (this.mainRoot) {
@@ -121,7 +101,38 @@ class BinarySearchTree {
       return null;
     }
   }
-  getParentNodeForRemove(root, data) {
+}
+
+module.exports = {
+  BinarySearchTree,
+};
+
+/* remove(data) {
+    if (!this.mainRoot) {
+      return;
+    }
+    if (this.mainRoot.data === data) {
+      this.mainRoot = null;
+    }
+    let parentRemoveNode = this.getParentNodeForRemove(this.mainRoot, data);
+    let removeNode;
+
+
+    
+         if (parentRemoveNode.left.data === data) {
+      removeNode = parentRemoveNode.left;
+    } else if (parentRemoveNode.right.data === data) {
+      removeNode = parentRemoveNode.right;
+    }
+    console.debug('MY INFO', parentRemoveNode, removeNode, 'MY INFO')
+ 
+    //вверху получили parent ноду для удаления
+    //проверить есть ли у удаляемого элемента правая и левая нода
+    //
+  }
+ */
+
+/*   getParentNodeForRemove(root, data) {
     if (root.data >= data) {
       if (root.left && root.left.data != data) {
         this.getParentNodeForRemove(root.left, data);
@@ -136,9 +147,4 @@ class BinarySearchTree {
         return root;
       }
     }
-  }
-}
-
-module.exports = {
-  BinarySearchTree,
-};
+  } */
