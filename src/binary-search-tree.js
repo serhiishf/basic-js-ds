@@ -34,7 +34,38 @@ class BinarySearchTree {
     return this.findNodeWithData(this.mainRoot, data);
   }
 
-  remove(data) {}
+  remove(data) {
+    if (this.mainRoot == null) return;
+
+    if (this.mainRoot.left == null && this.mainRoot.right == null) {
+      if (this.mainRoot.data == data) {
+        this.mainRoot = null;
+        return;
+      } else return;
+    }
+
+    let arr = [];
+    arr.push(this.mainRoot);
+    let temp = null;
+    let keyNode = null;
+
+    while (arr.length > 0) {
+      temp = arr[0];
+      arr.shift();
+
+      if (temp.data == data) keyNode = temp;
+
+      if (temp.left != null) arr.push(temp.left);
+
+      if (temp.right != null) arr.push(temp.right);
+    }
+
+    if (keyNode != null) {
+      let x = temp.data;
+      this.deleteDeep(this.mainRoot, temp);
+      keyNode.data = x;
+    }
+  }
 
   min() {
     if (this.mainRoot) {
@@ -99,6 +130,33 @@ class BinarySearchTree {
       return this.findNodeWithData(root.right, data);
     } else {
       return null;
+    }
+  }
+  deleteDeep(root, delNode) {
+    let arr = [];
+    arr.push(root);
+
+    let temp = null;
+    while (arr.length > 0) {
+      temp = arr[0];
+      arr.shift();
+
+      if (temp == delNode) {
+        temp = null;
+        return;
+      }
+      if (temp.right != null) {
+        if (temp.right == delNode) {
+          temp.right = null;
+          return;
+        } else arr.push(temp.right);
+      }
+      if (temp.left != null) {
+        if (temp.left == delNode) {
+          temp.left = null;
+          return;
+        } else arr.push(temp.left);
+      }
     }
   }
 }
